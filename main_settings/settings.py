@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['dkmqa-api.herokuapp.com']
 
-
+import os
 # Application definition
 
 INSTALLED_APPS = [
@@ -89,25 +89,24 @@ WSGI_APPLICATION = 'main_settings.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 ######## DB.SQLite3 ########
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+DATABASES = {
+     'default': {
+         'ENGINE': 'django.db.backends.sqlite3',
+         'NAME': BASE_DIR / 'db.sqlite3',
+     }
+ }
 
 ###### DB.MySQL #####
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'dkm-database-test',
-        'USER': 'main',
-        'PASSWORD': 'password...',
-        'HOST': 'localhost',
-        'PORT': '3306',
-    }
-}
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.mysql',
+#        'NAME': 'dkm-database-test',
+#        'USER': 'main',
+#        'PASSWORD': 'password...',
+#        'HOST': 'localhost',
+#        'PORT': '3306',
+#    }
+#}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -146,9 +145,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATISFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
-]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 REST_FRAMEWORK = {
