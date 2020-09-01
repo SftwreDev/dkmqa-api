@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -89,6 +89,7 @@ WSGI_APPLICATION = 'main_settings.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 ######## DB.SQLite3 ########
+<<<<<<< HEAD
 DATABASES = {
      'default': {
          'ENGINE': 'django.db.backends.sqlite3',
@@ -107,6 +108,27 @@ DATABASES = {
 #        'PORT': '3306',
 #    }
 #}
+=======
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+>>>>>>> 620f3bfc083dc4a67a4fffa8e36e78b441a110e1
+
+###### DB.MySQL #####
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'dkm-database-test',
+#         'USER': 'main',
+#         'PASSWORD': 'password...',
+#         'HOST': 'localhost',
+#         'PORT': '3306',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -145,7 +167,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+<<<<<<< HEAD
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+=======
+STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
+>>>>>>> 620f3bfc083dc4a67a4fffa8e36e78b441a110e1
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 REST_FRAMEWORK = {
