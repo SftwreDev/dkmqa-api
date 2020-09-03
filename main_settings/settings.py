@@ -94,11 +94,7 @@ WSGI_APPLICATION = 'main_settings.wsgi.application'
 
 ######## DB.SQLite3 ########
 
-<<<<<<< HEAD
-=======
 
-
->>>>>>> c31fa24cf2a94b311599b794a322e79d91fc1398
 
 DATABASES = {
     'default': {
@@ -107,11 +103,6 @@ DATABASES = {
     }
 }
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> c31fa24cf2a94b311599b794a322e79d91fc1398
 ###### DB.MySQL #####
 # DATABASES = {
 #     'default': {
@@ -163,17 +154,17 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-<<<<<<< HEAD
+
 STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-=======
+
 
 # STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
->>>>>>> c31fa24cf2a94b311599b794a322e79d91fc1398
+
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
