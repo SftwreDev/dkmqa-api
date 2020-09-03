@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 
@@ -25,7 +25,7 @@ SECRET_KEY = '#fx)*$$_kzktzop#f8lj$q%hphs3vu6=bg^satgny8bt8!-pdm'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['dkmqa-api.herokuapp.com']
 
 
 # Application definition
@@ -91,11 +91,9 @@ WSGI_APPLICATION = 'main_settings.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-<<<<<<< HEAD
-######## DB.SQLite3 ########
-=======
 
->>>>>>> d06f817b6534032bed43c366b176a7fd4fe60ddb
+######## DB.SQLite3 ########
+
 
 DATABASES = {
     'default': {
@@ -103,10 +101,7 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> d06f817b6534032bed43c366b176a7fd4fe60ddb
 ###### DB.MySQL #####
 # DATABASES = {
 #     'default': {
@@ -157,12 +152,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-<<<<<<< HEAD
-=======
+
 STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
->>>>>>> d06f817b6534032bed43c366b176a7fd4fe60ddb
+
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
