@@ -1,16 +1,23 @@
 from django.shortcuts import render
 from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveAPIView, DestroyAPIView, UpdateAPIView
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
+from rest_framework.views import APIView
 from .serializers import Category1Serializer, Category2Serializer, Category3Serializer
 from .models import Category1, Category2, Category3
-
-
+from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
+from rest_framework import status
+from knox.auth import TokenAuthentication
 ############### Category 1 API List, Create , Update , Delete ###############
 
-class Category1API(ListAPIView):
-    serializer_class = Category1Serializer
-    queryset = Category1.objects.all()
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def Category1API(request, *args, **kwargs):
+    content = {
+        "message" : "Hello"
+    }
+    return Response(content, status=status.HTTP_200_OK)
 
 
 @api_view(['POST'])

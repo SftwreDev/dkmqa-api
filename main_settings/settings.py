@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-import os
+
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,9 +25,9 @@ SECRET_KEY = '#fx)*$$_kzktzop#f8lj$q%hphs3vu6=bg^satgny8bt8!-pdm'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['dkmqa-api.herokuapp.com']
+ALLOWED_HOSTS = []
 
-import os
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -48,7 +48,10 @@ INSTALLED_APPS = [
     'corsheaders',
 ]
 
+
 CORS_ORIGIN_ALLOW_ALL = True
+
+AUTH_USER_MODEL = 'authentication.User'
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -89,26 +92,6 @@ WSGI_APPLICATION = 'main_settings.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 ######## DB.SQLite3 ########
-<<<<<<< HEAD
-DATABASES = {
-     'default': {
-         'ENGINE': 'django.db.backends.sqlite3',
-         'NAME': BASE_DIR / 'db.sqlite3',
-     }
- }
-
-###### DB.MySQL #####
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.mysql',
-#        'NAME': 'dkm-database-test',
-#        'USER': 'main',
-#        'PASSWORD': 'password...',
-#        'HOST': 'localhost',
-#        'PORT': '3306',
-#    }
-#}
-=======
 
 DATABASES = {
     'default': {
@@ -116,7 +99,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
->>>>>>> 620f3bfc083dc4a67a4fffa8e36e78b441a110e1
 
 ###### DB.MySQL #####
 # DATABASES = {
@@ -154,7 +136,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Manila'
 
 USE_I18N = True
 
@@ -167,34 +149,69 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-<<<<<<< HEAD
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-=======
-STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
->>>>>>> 620f3bfc083dc4a67a4fffa8e36e78b441a110e1
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         # 'rest_framework.authentication.BasicAuthentication',
         # 'rest_framework.authentication.SessionAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
         # 'rest_framework.authentication.TokenAuthentication',
-        'knox.auth.TokenAuthentication',
+        # 'knox.auth.TokenAuthentication',
     ),
     'DEFAULT_PERMISSIONS_CLASSES' : (
-        'rest_framework.permissions.IsAuthenticated'
+        'rest_framework.permissions.IsAuthenticated',
     ),
 }
 
-
-from datetime import timedelta
-from rest_framework.settings import api_settings
-REST_KNOX = {
-  'SECURE_HASH_ALGORITHM': 'cryptography.hazmat.primitives.hashes.SHA512',
-  'AUTH_TOKEN_CHARACTER_LENGTH': 64,
-  'TOKEN_TTL': timedelta(minutes=10),
-  'USER_SERIALIZER': 'knox.serializers.UserSerializer',
-  'TOKEN_LIMIT_PER_USER': None,
-  'AUTO_REFRESH': True,
-  'EXPIRY_DATETIME_FORMAT': "%m-%d-%Y %H:%M:%S",
+SIMPLE_JWT = {
+   'AUTH_HEADER_TYPES': ('JWT',),
 }
+
+DJOSER = {
+    'LOGIN_FIELD' : 'username',
+    'USER_CREATE_PASSWORD_RETYPE' : True,
+    "SERIALIZERS": {
+        "user_create": 'authentication.serializers.UserCreateSerializer',
+        "user" : 'authentication.serializers.UserCreateSerializer',
+    },
+}
+from datetime import timedelta
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(seconds=30),
+    # 'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    # 'ROTATE_REFRESH_TOKENS': False,
+    # 'BLACKLIST_AFTER_ROTATION': True,
+
+    # 'ALGORITHM': 'HS256',
+    # 'SIGNING_KEY': settings.SECRET_KEY,
+    # 'VERIFYING_KEY': None,
+    # 'AUDIENCE': None,
+    # 'ISSUER': None,
+
+    # 'AUTH_HEADER_TYPES': ('Bearer',),
+    # 'USER_ID_FIELD': 'id',
+    # 'USER_ID_CLAIM': 'user_id',
+
+    # 'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
+    # 'TOKEN_TYPE_CLAIM': 'token_type',
+
+    # 'JTI_CLAIM': 'jti',
+
+    # 'SLIDING_TOKEN_REFRESH_EXP_CLAIM': 'refresh_exp',
+    # 'SLIDING_TOKEN_LIFETIME': timedelta(minutes=5),
+    # 'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
+}
+
+# from datetime import timedelta
+# from rest_framework.settings import api_settings
+# REST_KNOX = {
+#   'SECURE_HASH_ALGORITHM': 'cryptography.hazmat.primitives.hashes.SHA512',
+#   'AUTH_TOKEN_CHARACTER_LENGTH': 64,
+#   'TOKEN_TTL': timedelta(seconds=30),
+#   'USER_SERIALIZER': 'knox.serializers.UserSerializer',
+#   'TOKEN_LIMIT_PER_USER': None,
+#   'AUTO_REFRESH': True,
+#   'EXPIRY_DATETIME_FORMAT': "%m-%d-%Y %H:%M:%S",
+# }       

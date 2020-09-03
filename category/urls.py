@@ -17,7 +17,7 @@ from . views import (
 
 urlpatterns = [
     
-    path('api/category/', Category1API.as_view(), name='category1_list'),
+    path('api/category/', Category1API, name='category1_list'),
     path('api/category-label/', category1_create_api, name='create_category1'),
     path('api/category-label/<int:pk>/', update_category1_api, name='update_category1'),
     path('api/category-label/<int:pk>/', delete_category1_api, name='delete_category1'),
