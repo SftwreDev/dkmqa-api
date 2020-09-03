@@ -91,11 +91,11 @@ WSGI_APPLICATION = 'main_settings.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-<<<<<<< HEAD
-######## DB.SQLite3 ########
-=======
 
->>>>>>> d06f817b6534032bed43c366b176a7fd4fe60ddb
+######## DB.SQLite3 ########
+
+
+
 
 DATABASES = {
     'default': {
@@ -103,10 +103,9 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> d06f817b6534032bed43c366b176a7fd4fe60ddb
+
+
 ###### DB.MySQL #####
 # DATABASES = {
 #     'default': {
@@ -157,12 +156,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-<<<<<<< HEAD
-=======
+
+
 STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
->>>>>>> d06f817b6534032bed43c366b176a7fd4fe60ddb
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
