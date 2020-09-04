@@ -103,6 +103,11 @@ DATABASES = {
     }
 }
 
+import dj_database_url
+db_for_heroku = dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(db_for_heroku)
+
+
 ###### DB.MySQL #####
 # DATABASES = {
 #     'default': {
