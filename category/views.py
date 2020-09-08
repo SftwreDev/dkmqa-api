@@ -11,13 +11,18 @@ from knox.auth import TokenAuthentication
 ############### Category 1 API List, Create , Update , Delete ###############
 
 
-@api_view(['GET'])
+@api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
-def Category1API(request, *args, **kwargs):
-    content = {
-        "message" : "Hello"
-    }
-    return Response(content, status=status.HTTP_200_OK)
+def Category1API(request):
+    if request.method == 'GET':
+        cat1 = Category1.objects.all()
+        serializer = Category1Serializer(cat1, many=True)
+        return Response(serializer.data)
+    elif request.method == 'POST' :
+        serializer = Category1Serializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+        return Response(serializer.data)
 
 
 @api_view(['POST'])
