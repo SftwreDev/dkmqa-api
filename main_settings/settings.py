@@ -201,3 +201,6 @@ SIMPLE_JWT = {
     # 'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
 
+import dj_database_url
+db_for_heroku = dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(db_for_heroku)
