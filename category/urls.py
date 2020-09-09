@@ -5,10 +5,9 @@ from . views import (
     Category1API,
     Category2API,
     Category3API,
-    category3_create_api,
-    delete_category3_api,
     category1,
     category2,
+    category3,
 )
 
 
@@ -24,7 +23,6 @@ urlpatterns = [
    
    
                         ### Defect Codes ###
-    path('api/defect-codes/', Category3API.as_view(), name='category3_list'),
-    path('api/defect-codes/add/', category3_create_api, name='create_category3'),
-    path('api/defect-codes/<int:pk>/', delete_category3_api, name='delete_category3'),
+    path('api/defect-codes/', Category3API, name='category3_list'),
+    path('api/defect-codes/<int:pk>/', category3, name='delete_category3'),
 ]

@@ -30,6 +30,7 @@ def Category1API(request):
 
 
 @api_view(['PUT', 'DELETE'])
+@permission_classes([IsAuthenticated])
 def category1(request, pk):
     if request.method == 'PUT':
         cat1 = Category1.objects.get(id=pk)
@@ -63,6 +64,7 @@ def Category2API(request):
 
 
 @api_view(['PUT', 'DELETE'])
+@permission_classes([IsAuthenticated])
 def category2(request, pk):
     if request.method == 'PUT':
         cat2 = Category2.objects.get(id=pk)
@@ -79,23 +81,31 @@ def category2(request, pk):
 
 ############### Category 3 API List, Create , Update , Delete ###############
 
-class Category3API(ListAPIView):
-    serializer_class = Category3Serializer
-    queryset = Category3.objects.all()
+@api_view(['GET', 'POST'])
+@permission_classes([IsAuthenticated])
+def Category3API(request):
+    if request.method == 'GET':
+        cat3 = Category3.objects.all()
+        serializer = Category3Serializer(cat3, many=True)
+        return Response(serializer.data)
+    elif request.method == 'POST' :
+        serializer = Category3Serializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+        return Response(serializer.data)
 
 
-@api_view(['POST'])
-def category3_create_api(request):
-    serializer = Category3Serializer(data=request.data)
+@api_view(['PUT', 'DELETE'])
+@permission_classes([IsAuthenticated])
+def category3(request, pk):
+    if request.method == 'PUT':
+        cat3 = Category3.objects.get(id=pk)
+        serializer = Category3Serializer(instance=cat3, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+        return Response(serializer.data)
+    elif request.method == 'DELETE':
+        cat3 = Category3.objects.get(id=pk)
+        cat3.delete()
 
-    if serializer.is_valid():
-        serializer.save()
-    return Response(serializer.data)
-
-
-@api_view(['DELETE'])
-def delete_category3_api(request, pk):
-    category1 = Category3.objects.get(id=pk)
-    category1.delete()
-
-    return Response("Category 3 succesfully deleted")
+        return Response("Item successfully deleted")

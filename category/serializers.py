@@ -20,6 +20,7 @@ class Category2Serializer(serializers.ModelSerializer):
 
 
 class Category3Serializer(serializers.ModelSerializer):
+    category1ID = serializers.StringRelatedField()
     class Meta:
         model = Category3
-        fields = '__all__'               
+        fields = ('steps', 'description','created_by' , 'category1ID')             
