@@ -31,7 +31,9 @@ class Category1(models.Model):
     update_by = models.CharField(max_length=100, verbose_name='Update by')
 
     
-
+    def __str__(self):
+        return self.name
+    
 
 ################# Category 2 Translation Choices ########################
 
@@ -45,12 +47,12 @@ class Category2Translation(models.Model):
 
 class Category2(models.Model):
     category1ID = models.ForeignKey(Category1, on_delete=models.CASCADE, verbose_name = 'Category 1 ID')
-    category2Translation = models.ForeignKey(Category2Translation, on_delete = models.CASCADE, verbose_name = "Category 2 Transalation")
-    description = models.CharField(max_length=100, verbose_name="Description")
+    # category2Translation = models.ForeignKey(Category2Translation, on_delete = models.CASCADE, verbose_name = "Category 2 Transalation")
+    steps = models.PositiveIntegerField()
+    description = models.CharField(max_length=500, verbose_name="Description")
     date_created = models.DateField(auto_now=True, verbose_name="Date Created")
     created_by = models.CharField(max_length=100, verbose_name= 'Created by')
-    date_updated = models.DateField(auto_now=True, verbose_name='Date updated')
-    update_by = models.CharField(max_length=100, verbose_name='Update by')
+    
 
 
 

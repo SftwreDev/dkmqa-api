@@ -100,11 +100,6 @@ DATABASES = {
     }
 }
 
-import dj_database_url
-db_for_heroku = dj_database_url.config(conn_max_age=600)
-DATABASES['default'].update(db_for_heroku)
-
-
 ###### DB.MySQL #####
 # DATABASES = {
 #     'default': {
@@ -130,15 +125,9 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
     },
-<<<<<<< HEAD
     # {
     #     'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     # },
-=======
-#     {
-#         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-#     },
->>>>>>> 99a0e81580f6133a21e9dfcbae90b11b49708963
 ]
 
 
@@ -188,15 +177,9 @@ from datetime import timedelta
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=10),
-<<<<<<< HEAD
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
     'ROTATE_REFRESH_TOKENS': False,
     'BLACKLIST_AFTER_ROTATION': True,
-=======
-    # 'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
-    # 'ROTATE_REFRESH_TOKENS': False,
-    # 'BLACKLIST_AFTER_ROTATION': True,
->>>>>>> 99a0e81580f6133a21e9dfcbae90b11b49708963
 
     'ALGORITHM': 'HS256',
     'SIGNING_KEY': SECRET_KEY,
