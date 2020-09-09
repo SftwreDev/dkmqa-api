@@ -125,11 +125,11 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
     },
-<<<<<<< HEAD
+
     # {
     #     'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     # },
-=======
+
 
     # {
     #     'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
@@ -139,7 +139,6 @@ AUTH_PASSWORD_VALIDATORS = [
 #         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
 #     },
 
->>>>>>> 87736817461632eb0a641fabd2c1242626191356
 ]
 
 
@@ -189,11 +188,11 @@ from datetime import timedelta
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=10),
-<<<<<<< HEAD
+
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
     'ROTATE_REFRESH_TOKENS': False,
     'BLACKLIST_AFTER_ROTATION': True,
-=======
+
 
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
     'ROTATE_REFRESH_TOKENS': False,
@@ -203,7 +202,6 @@ SIMPLE_JWT = {
     # 'ROTATE_REFRESH_TOKENS': False,
     # 'BLACKLIST_AFTER_ROTATION': True,
 
->>>>>>> 87736817461632eb0a641fabd2c1242626191356
 
     'ALGORITHM': 'HS256',
     'SIGNING_KEY': SECRET_KEY,
