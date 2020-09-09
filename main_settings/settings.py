@@ -25,7 +25,7 @@ SECRET_KEY = '#fx)*$$_kzktzop#f8lj$q%hphs3vu6=bg^satgny8bt8!-pdm'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['dkmqa-api.herokuapp.com']
 
 
 # Application definition
@@ -125,9 +125,21 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
     },
+<<<<<<< HEAD
     # {
     #     'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     # },
+=======
+
+    # {
+    #     'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    # },
+
+#     {
+#         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+#     },
+
+>>>>>>> 87736817461632eb0a641fabd2c1242626191356
 ]
 
 
@@ -177,9 +189,21 @@ from datetime import timedelta
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=10),
+<<<<<<< HEAD
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
     'ROTATE_REFRESH_TOKENS': False,
     'BLACKLIST_AFTER_ROTATION': True,
+=======
+
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'ROTATE_REFRESH_TOKENS': False,
+    'BLACKLIST_AFTER_ROTATION': True,
+
+    # 'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    # 'ROTATE_REFRESH_TOKENS': False,
+    # 'BLACKLIST_AFTER_ROTATION': True,
+
+>>>>>>> 87736817461632eb0a641fabd2c1242626191356
 
     'ALGORITHM': 'HS256',
     'SIGNING_KEY': SECRET_KEY,
