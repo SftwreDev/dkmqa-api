@@ -1,4 +1,5 @@
 from django.db import models
+from authentication.models import User
 
 class Language(models.Model):
     name = models.CharField(max_length=100, verbose_name="Name")
@@ -23,13 +24,13 @@ class Category1Translation(models.Model):
 class Category1(models.Model):
     # category1Translation = models.ForeignKey(Category1Translation, on_delete=models.CASCADE, verbose_name="Category 1 ID")
     name = models.CharField(max_length = 200, verbose_name = "Category 1 Label")
+    steps = models.PositiveIntegerField()
     date_created = models.DateField(auto_now=True, verbose_name="Date Created")
     created_by = models.CharField(max_length=100, verbose_name= 'Created by')
     date_updated = models.DateField(auto_now=True, verbose_name='Date updated')
     update_by = models.CharField(max_length=100, verbose_name='Update by')
 
-    def __str__(self):
-        return self.name
+    
 
 
 ################# Category 2 Translation Choices ########################

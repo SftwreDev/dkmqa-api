@@ -11,40 +11,37 @@ from knox.auth import TokenAuthentication
 ############### Category 1 API List, Create , Update , Delete ###############
 
 
-@api_view(['GET'])
+@api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
-def Category1API(request, *args, **kwargs):
-    content = {
-        "message" : "Hello"
-    }
-    return Response(content, status=status.HTTP_200_OK)
+def Category1API(request):
+    if request.method == 'GET':
+        cat1 = Category1.objects.all()
+        serializer = Category1Serializer(cat1, many=True)
+        return Response(serializer.data)
+    elif request.method == 'POST' :
+        serializer = Category1Serializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+        return Response(serializer.data)
+    
+    
 
 
-@api_view(['POST'])
-def category1_create_api(request):
-    serializer = Category1Serializer(data=request.data)
+@api_view(['PUT', 'DELETE'])
+def category1(request, pk):
+    if request.method == 'PUT':
+        cat1 = Category1.objects.get(id=pk)
+        serializer = Category1Serializer(instance=cat1, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+        return Response(serializer.data)
+    elif request.method == 'DELETE':
+        cat1 = Category1.objects.get(id=pk)
+        cat1.delete()
 
-    if serializer.is_valid():
-        serializer.save()
-    return Response(serializer.data)
-
-
-@api_view(['POST'])
-def update_category1_api(request, pk):
-    category1 = Category1.objects.get(id=pk)
-    serializer = Category1Serializer(instance=category1, data=request.data)
-
-    if serializer.is_valid():
-        serializer.save()
-    return Response(serializer.data)
+        return Response("Item successfully deleted")
 
 
-@api_view(['DELETE'])
-def delete_category1_api(request, pk):
-    category1 = Category1.objects.get(id=pk)
-    category1.delete()
-
-    return Response("Category 1 succesfully deleted")
 
 
 ############### Category 2 API List, Create , Update , Delete ###############

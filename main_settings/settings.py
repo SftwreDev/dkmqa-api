@@ -11,10 +11,10 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
-import os
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
-import os
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -23,9 +23,9 @@ import os
 SECRET_KEY = '#fx)*$$_kzktzop#f8lj$q%hphs3vu6=bg^satgny8bt8!-pdm'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['dkmqa-api.herokuapp.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -91,10 +91,7 @@ WSGI_APPLICATION = 'main_settings.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-
 ######## DB.SQLite3 ########
-
-
 
 DATABASES = {
     'default': {
@@ -128,9 +125,9 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
     },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    # {
+    #     'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    # },
 ]
 
 
@@ -154,18 +151,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-
-STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-
-
-# STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         # 'rest_framework.authentication.BasicAuthentication',
@@ -179,9 +164,6 @@ REST_FRAMEWORK = {
     ),
 }
 
-SIMPLE_JWT = {
-   'AUTH_HEADER_TYPES': ('JWT',),
-}
 
 DJOSER = {
     'LOGIN_FIELD' : 'username',
@@ -194,39 +176,28 @@ DJOSER = {
 from datetime import timedelta
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(seconds=30),
-    # 'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
-    # 'ROTATE_REFRESH_TOKENS': False,
-    # 'BLACKLIST_AFTER_ROTATION': True,
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=10),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'ROTATE_REFRESH_TOKENS': False,
+    'BLACKLIST_AFTER_ROTATION': True,
 
-    # 'ALGORITHM': 'HS256',
-    # 'SIGNING_KEY': settings.SECRET_KEY,
+    'ALGORITHM': 'HS256',
+    'SIGNING_KEY': SECRET_KEY,
     # 'VERIFYING_KEY': None,
     # 'AUDIENCE': None,
     # 'ISSUER': None,
 
-    # 'AUTH_HEADER_TYPES': ('Bearer',),
-    # 'USER_ID_FIELD': 'id',
-    # 'USER_ID_CLAIM': 'user_id',
+    'AUTH_HEADER_TYPES': ('Bearer',),
+    'USER_ID_FIELD': 'id',
+    'USER_ID_CLAIM': 'user_id',
 
-    # 'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
-    # 'TOKEN_TYPE_CLAIM': 'token_type',
+    'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
+    'TOKEN_TYPE_CLAIM': 'token_type',
 
-    # 'JTI_CLAIM': 'jti',
+    'JTI_CLAIM': 'jti',
 
     # 'SLIDING_TOKEN_REFRESH_EXP_CLAIM': 'refresh_exp',
     # 'SLIDING_TOKEN_LIFETIME': timedelta(minutes=5),
     # 'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
 
-# from datetime import timedelta
-# from rest_framework.settings import api_settings
-# REST_KNOX = {
-#   'SECURE_HASH_ALGORITHM': 'cryptography.hazmat.primitives.hashes.SHA512',
-#   'AUTH_TOKEN_CHARACTER_LENGTH': 64,
-#   'TOKEN_TTL': timedelta(seconds=30),
-#   'USER_SERIALIZER': 'knox.serializers.UserSerializer',
-#   'TOKEN_LIMIT_PER_USER': None,
-#   'AUTO_REFRESH': True,
-#   'EXPIRY_DATETIME_FORMAT': "%m-%d-%Y %H:%M:%S",
-# }       

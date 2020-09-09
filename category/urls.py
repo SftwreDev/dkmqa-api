@@ -3,24 +3,20 @@ from django.urls import path
 
 from . views import (
     Category1API,
-    category1_create_api,
-    update_category1_api, 
-    delete_category1_api,
     Category2API,
     category2_create_api,
     delete_category2_api,
     Category3API,
     category3_create_api,
-    delete_category3_api
+    delete_category3_api,
+    category1,
 )
 
 
 urlpatterns = [
     
     path('api/category/', Category1API, name='category1_list'),
-    path('api/category-label/', category1_create_api, name='create_category1'),
-    path('api/category-label/<int:pk>/', update_category1_api, name='update_category1'),
-    path('api/category-label/<int:pk>/', delete_category1_api, name='delete_category1'),
+    path('api/category/<int:pk>/', category1, name='update_category1'),
     path('api/checklist/', Category2API.as_view(), name='category2_list'),
     path('api/checklist/create', category2_create_api, name='create_category2'),
     path('api/checklist/<int:pk>/', delete_category2_api, name='delete_category2'),
