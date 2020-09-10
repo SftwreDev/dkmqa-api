@@ -70,11 +70,7 @@ class Category3(models.Model):
 
     categoryName = models.ForeignKey(Category1, on_delete=models.SET_NULL,null=True, verbose_name = 'Category Name')
     # category3Translation = models.ForeignKey(Category3Translation, on_delete = models.CASCADE, verbose_name = "Category 2 Transalation")
-<<<<<<< HEAD
-    # category3Translation = models.ForeignKey(Category3Translation, on_delete = models.CASCADE, verbose_name = "Category 2 Transalation")
     steps = models.PositiveIntegerField()
-=======
->>>>>>> 67d8a4e67be4aa40fe0aee0f6ac3270d8233bea7
     description = models.CharField(max_length=500, verbose_name="Description")
     date_created = models.DateField(auto_now=True, verbose_name="Date Created")
     created_by = models.CharField(max_length=100, verbose_name= 'Created by')
