@@ -25,7 +25,7 @@ SECRET_KEY = '#fx)*$$_kzktzop#f8lj$q%hphs3vu6=bg^satgny8bt8!-pdm'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['dkmqa-api.herokuapp.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -176,7 +176,7 @@ DJOSER = {
 from datetime import timedelta
 
 SIMPLE_JWT = {
-<<<<<<< HEAD
+
     'ACCESS_TOKEN_LIFETIME': timedelta(hours=3),
 
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
@@ -184,9 +184,9 @@ SIMPLE_JWT = {
     'BLACKLIST_AFTER_ROTATION': True,
 
 
-=======
+
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=10),
->>>>>>> 75640c6d1d727d7249a837047c43e709ee45ae0a
+
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
     'ROTATE_REFRESH_TOKENS': False,
     'BLACKLIST_AFTER_ROTATION': True,

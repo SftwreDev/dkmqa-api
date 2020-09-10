@@ -8,7 +8,7 @@ from .models import Category1, Category2, Category3
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 from rest_framework import status
 from knox.auth import TokenAuthentication\
-
+from rest_framework import status
 
 ############### Category 1 API List, Create , Update , Delete ###############
 
@@ -24,6 +24,9 @@ def Category1API(request):
         serializer = Category1Serializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
+        else:
+            content = {'Error': 'Invalid data'}
+            return Response(content,status=status.HTTP_404_NOT_FOUND)
         return Response(serializer.data)
     
     
@@ -37,7 +40,11 @@ def category1(request, pk):
         serializer = Category1Serializer(instance=cat1, data=request.data)
         if serializer.is_valid():
             serializer.save()
+        else:
+            content = {'Error': 'Invalid data'}
+            return Response(content,status=status.HTTP_404_NOT_FOUND)
         return Response(serializer.data)
+
     elif request.method == 'DELETE':
         cat1 = Category1.objects.get(id=pk)
         cat1.delete()
@@ -60,6 +67,9 @@ def Category2API(request):
         serializer = Category1Serializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
+        else:
+            content = {'Error': 'Invalid data'}
+            return Response(content,status=status.HTTP_404_NOT_FOUND)
         return Response(serializer.data)
 
 
@@ -71,6 +81,9 @@ def category2(request, pk):
         serializer = Category2Serializer(instance=cat2, data=request.data)
         if serializer.is_valid():
             serializer.save()
+        else:
+            content = {'Error': 'Invalid data'}
+            return Response(content,status=status.HTTP_404_NOT_FOUND)
         return Response(serializer.data)
     elif request.method == 'DELETE':
         cat1 = Category2.objects.get(id=pk)

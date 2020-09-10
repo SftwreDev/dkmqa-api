@@ -67,16 +67,12 @@ class Category3Translation(models.Model):
 ################# Category 2 Checklist ########################
 
 class Category3(models.Model):
-<<<<<<< HEAD
+
     categoryName = models.ForeignKey(Category1, on_delete=models.SET_NULL,null=True, verbose_name = 'Category Name')
     # category3Translation = models.ForeignKey(Category3Translation, on_delete = models.CASCADE, verbose_name = "Category 2 Transalation")
-    description = models.CharField(max_length=100, verbose_name="Description")
-=======
-    category1ID = models.ForeignKey(Category1, on_delete=models.CASCADE, verbose_name = 'Category 1 ID')
     # category3Translation = models.ForeignKey(Category3Translation, on_delete = models.CASCADE, verbose_name = "Category 2 Transalation")
     steps = models.PositiveIntegerField()
     description = models.CharField(max_length=500, verbose_name="Description")
->>>>>>> 75640c6d1d727d7249a837047c43e709ee45ae0a
     date_created = models.DateField(auto_now=True, verbose_name="Date Created")
     created_by = models.CharField(max_length=100, verbose_name= 'Created by')
     # date_updated = models.DateField(auto_now=True, verbose_name='Date updated')
