@@ -46,7 +46,7 @@ class Category2Translation(models.Model):
 ################# Category 2 Checklist ########################
 
 class Category2(models.Model):
-    category1ID = models.ForeignKey(Category1, on_delete=models.CASCADE, verbose_name = 'Category 1 ID')
+    categoryName = models.ForeignKey(Category1, on_delete=models.SET_NULL,null=True, verbose_name = 'Category Name')
     # category2Translation = models.ForeignKey(Category2Translation, on_delete = models.CASCADE, verbose_name = "Category 2 Transalation")
     steps = models.PositiveIntegerField()
     description = models.CharField(max_length=500, verbose_name="Description")
@@ -67,13 +67,13 @@ class Category3Translation(models.Model):
 ################# Category 2 Checklist ########################
 
 class Category3(models.Model):
-    category1ID = models.ForeignKey(Category1, on_delete=models.CASCADE, verbose_name = 'Category 1 ID')
-    category3Translation = models.ForeignKey(Category3Translation, on_delete = models.CASCADE, verbose_name = "Category 2 Transalation")
+    categoryName = models.ForeignKey(Category1, on_delete=models.SET_NULL,null=True, verbose_name = 'Category Name')
+    # category3Translation = models.ForeignKey(Category3Translation, on_delete = models.CASCADE, verbose_name = "Category 2 Transalation")
     description = models.CharField(max_length=100, verbose_name="Description")
     date_created = models.DateField(auto_now=True, verbose_name="Date Created")
     created_by = models.CharField(max_length=100, verbose_name= 'Created by')
-    date_updated = models.DateField(auto_now=True, verbose_name='Date updated')
-    update_by = models.CharField(max_length=100, verbose_name='Update by')
+    # date_updated = models.DateField(auto_now=True, verbose_name='Date updated')
+    # update_by = models.CharField(max_length=100, verbose_name='Update by')
 
 
 
