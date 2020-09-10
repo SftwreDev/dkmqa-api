@@ -7,7 +7,7 @@ from .serializers import Category1Serializer, Category2Serializer, Category3Seri
 from .models import Category1, Category2, Category3
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 from rest_framework import status
-from knox.auth import TokenAuthentication\
+from knox.auth import TokenAuthentication
 from rest_framework import status
 
 ############### Category 1 API List, Create , Update , Delete ###############
