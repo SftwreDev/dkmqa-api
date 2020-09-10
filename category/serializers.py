@@ -20,7 +20,14 @@ class Category2Serializer(serializers.ModelSerializer):
 
 
 class Category3Serializer(serializers.ModelSerializer):
+<<<<<<< HEAD
     categoryName = serializers.StringRelatedField()
     class Meta:
         model = Category3
         fields = ('id','steps', 'description','created_by' , 'categoryName')             
+=======
+    category1ID = serializers.StringRelatedField()
+    class Meta:
+        model = Category3
+        fields = ('steps', 'description','created_by' , 'category1ID')             
+>>>>>>> 75640c6d1d727d7249a837047c43e709ee45ae0a

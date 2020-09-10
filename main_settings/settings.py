@@ -125,20 +125,9 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
     },
-
     # {
     #     'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     # },
-
-
-    # {
-    #     'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    # },
-
-#     {
-#         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-#     },
-
 ]
 
 
@@ -187,6 +176,7 @@ DJOSER = {
 from datetime import timedelta
 
 SIMPLE_JWT = {
+<<<<<<< HEAD
     'ACCESS_TOKEN_LIFETIME': timedelta(hours=3),
 
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
@@ -194,14 +184,12 @@ SIMPLE_JWT = {
     'BLACKLIST_AFTER_ROTATION': True,
 
 
+=======
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=10),
+>>>>>>> 75640c6d1d727d7249a837047c43e709ee45ae0a
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
     'ROTATE_REFRESH_TOKENS': False,
     'BLACKLIST_AFTER_ROTATION': True,
-
-    # 'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
-    # 'ROTATE_REFRESH_TOKENS': False,
-    # 'BLACKLIST_AFTER_ROTATION': True,
-
 
     'ALGORITHM': 'HS256',
     'SIGNING_KEY': SECRET_KEY,
@@ -223,3 +211,6 @@ SIMPLE_JWT = {
     # 'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
 
+import dj_database_url
+db_for_heroku = dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(db_for_heroku)
