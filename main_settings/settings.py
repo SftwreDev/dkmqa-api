@@ -176,17 +176,22 @@ DJOSER = {
 from datetime import timedelta
 
 SIMPLE_JWT = {
+<<<<<<< HEAD
 
     'ACCESS_TOKEN_LIFETIME': timedelta(hours=3),
+=======
+>>>>>>> 67d8a4e67be4aa40fe0aee0f6ac3270d8233bea7
 
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
-    'ROTATE_REFRESH_TOKENS': False,
+    'ACCESS_TOKEN_LIFETIME': timedelta(hours=3),
     'BLACKLIST_AFTER_ROTATION': True,
+<<<<<<< HEAD
 
 
 
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=10),
 
+=======
+>>>>>>> 67d8a4e67be4aa40fe0aee0f6ac3270d8233bea7
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
     'ROTATE_REFRESH_TOKENS': False,
     'BLACKLIST_AFTER_ROTATION': True,
