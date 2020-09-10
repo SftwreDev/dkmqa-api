@@ -179,12 +179,7 @@ from datetime import timedelta
 SIMPLE_JWT = {
 
 
-    'ACCESS_TOKEN_LIFETIME': timedelta(hours=3),
-<<<<<<< HEAD
 
-=======
-    'BLACKLIST_AFTER_ROTATION': True,
->>>>>>> 65f8373f2b55060b62a521290f3d0cda69f56bc3
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
     'ROTATE_REFRESH_TOKENS': False,
     'BLACKLIST_AFTER_ROTATION': True,
