@@ -92,6 +92,7 @@ WSGI_APPLICATION = 'main_settings.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 ######## DB.SQLite3 ########
+import os
 
 DATABASES = {
     'default': {
