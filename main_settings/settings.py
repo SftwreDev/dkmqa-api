@@ -25,7 +25,7 @@ SECRET_KEY = '#fx)*$$_kzktzop#f8lj$q%hphs3vu6=bg^satgny8bt8!-pdm'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['dkmqa-api.herokuapp.com']
 
 
 # Application definition
@@ -92,11 +92,12 @@ WSGI_APPLICATION = 'main_settings.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 ######## DB.SQLite3 ########
+import os
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -179,7 +180,11 @@ SIMPLE_JWT = {
 
 
     'ACCESS_TOKEN_LIFETIME': timedelta(hours=3),
+<<<<<<< HEAD
 
+=======
+    'BLACKLIST_AFTER_ROTATION': True,
+>>>>>>> 65f8373f2b55060b62a521290f3d0cda69f56bc3
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
     'ROTATE_REFRESH_TOKENS': False,
     'BLACKLIST_AFTER_ROTATION': True,
