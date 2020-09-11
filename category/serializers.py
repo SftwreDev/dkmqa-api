@@ -11,7 +11,7 @@ class Category1Serializer(serializers.ModelSerializer):
 
 
  
-class Category2Serializer(serializers.ModelSerializer):
+class Category2Serializer(serializers.HyperlinkedModelSerializer):
     categoryName = serializers.StringRelatedField()
     class Meta:
         model = Category2
@@ -19,7 +19,7 @@ class Category2Serializer(serializers.ModelSerializer):
 
 
 
-class Category3Serializer(serializers.ModelSerializer):
+class Category3Serializer(serializers.HyperlinkedModelSerializer):
     categoryName = serializers.StringRelatedField()
     class Meta:
         model = Category3
