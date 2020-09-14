@@ -25,8 +25,8 @@ SECRET_KEY = '#fx)*$$_kzktzop#f8lj$q%hphs3vu6=bg^satgny8bt8!-pdm'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['dkmqa-api.herokuapp.com']
-
+# ALLOWED_HOSTS = ['dkmqa-api.herokuapp.com']
+ALLOWED_HOSTS = []
 
 # Application definition
 

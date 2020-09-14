@@ -8,7 +8,7 @@ from .models import Category1, Category2, Category3
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 from rest_framework import status
 from knox.auth import TokenAuthentication
-from rest_framework import status
+
 
 ############### Category 1 API List, Create , Update , Delete ###############
 
@@ -26,7 +26,7 @@ def Category1API(request):
             serializer.save()
         else:
             content = {'Error': 'Invalid data'}
-            return Response(content,status=status.HTTP_404_NOT_FOUND)
+            return Response(content,status=status.HTTP_400_BAD_REQUEST)
         return Response(serializer.data)
     
     
@@ -42,7 +42,7 @@ def category1(request, pk):
             serializer.save()
         else:
             content = {'Error': 'Invalid data'}
-            return Response(content,status=status.HTTP_404_NOT_FOUND)
+            return Response(content,status=status.HTTP_400_BAD_REQUEST)
         return Response(serializer.data)
 
     elif request.method == 'DELETE':
@@ -64,12 +64,12 @@ def Category2API(request):
         serializer = Category2Serializer(cat2, many=True)
         return Response(serializer.data)
     elif request.method == 'POST' :
-        serializer = Category1Serializer(data=request.data)
+        serializer = Category2Serializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
         else:
             content = {'Error': 'Invalid data'}
-            return Response(content,status=status.HTTP_404_NOT_FOUND)
+            return Response(content,status=status.HTTP_400_BAD_REQUEST)
         return Response(serializer.data)
 
 
@@ -83,7 +83,7 @@ def category2(request, pk):
             serializer.save()
         else:
             content = {'Error': 'Invalid data'}
-            return Response(content,status=status.HTTP_404_NOT_FOUND)
+            return Response(content,status=status.HTTP_400_BAD_REQUEST)
         return Response(serializer.data)
     elif request.method == 'DELETE':
         cat1 = Category2.objects.get(id=pk)

@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 
 
 from . views import (
@@ -25,4 +25,7 @@ urlpatterns = [
                         ### Defect Codes ###
     path('api/defect-codes/', Category3API, name='category3_list'),
     path('api/defect-codes/<int:pk>/', category3, name='delete_category3'),
+
+
 ]
+
