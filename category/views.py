@@ -3,7 +3,7 @@ from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveAPIView,
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .serializers import Category1Serializer, Category2Serializer, Category3Serializer
+from .serializers import Category1Serializer, Category2Serializer, Category3Serializer, Category2ChecklistSerializer, Category3DefectCodesSerializer
 from .models import Category1, Category2, Category3
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 from rest_framework import status
@@ -61,7 +61,7 @@ def category1(request, pk):
 def Category2API(request):
     if request.method == 'GET':
         cat2 = Category2.objects.all()
-        serializer = Category2Serializer(cat2, many=True)
+        serializer = Category2ChecklistSerializer(cat2, many=True)
         return Response(serializer.data)
     elif request.method == 'POST' :
         serializer = Category2Serializer(data=request.data)
@@ -99,7 +99,7 @@ def category2(request, pk):
 def Category3API(request):
     if request.method == 'GET':
         cat3 = Category3.objects.all()
-        serializer = Category3Serializer(cat3, many=True)
+        serializer = Category3DefectCodesSerializer(cat3, many=True)
         return Response(serializer.data)
     elif request.method == 'POST' :
         serializer = Category3Serializer(data=request.data)

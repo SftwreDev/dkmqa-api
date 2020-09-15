@@ -46,19 +46,17 @@ class Category2Translation(models.Model):
 ################# Category 2 Checklist ########################
 
 class Category2(models.Model):
-    categoryName = models.ForeignKey(Category1, on_delete=models.SET_NULL, null=True, verbose_name = 'Category Name', related_name ='checklist')
+    categoryID = models.ForeignKey(Category1, on_delete=models.SET_NULL, null=True, verbose_name = 'Category Name', related_name ='checklist')
     # category2Translation = models.ForeignKey(Category2Translation, on_delete = models.CASCADE, verbose_name = "Category 2 Transalation")
     steps = models.PositiveIntegerField()
-    description = models.CharField(max_length=500, verbose_name="Description")
+    description = models.CharField(max_length=500,blank=True, null=True, verbose_name="Description")
     date_created = models.DateField(auto_now=True, verbose_name="Date Created")
-    created_by = models.CharField(max_length=100, verbose_name= 'Created by')
+    created_by = models.CharField(max_length=100,blank=True, null=True, verbose_name= 'Created by')
 
-    def __str__(self):
-        return self.categoryName
+    # def __str__(self):
+    #     return self.categoryName
     
     
-
-
 
 ################# Category 2 Translation Choices ########################
 
@@ -72,7 +70,7 @@ class Category3Translation(models.Model):
 
 class Category3(models.Model):
 
-    categoryName = models.ForeignKey(Category1, on_delete=models.CASCADE, verbose_name = 'Category Name', related_name ='defect_codes')
+    categoryID = models.ForeignKey(Category1, on_delete=models.CASCADE, verbose_name = 'Category Name', related_name ='defect_codes')
     # category3Translation = models.ForeignKey(Category3Translation, on_delete = models.CASCADE, verbose_name = "Category 2 Transalation")
     steps = models.PositiveIntegerField()
     description = models.CharField(max_length=500, verbose_name="Description")

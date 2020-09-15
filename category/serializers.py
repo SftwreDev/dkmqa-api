@@ -9,28 +9,40 @@ class Category1Serializer(serializers.ModelSerializer):
         model = Category1
         fields = '__all__'
 
-
  
 class Category2Serializer(serializers.ModelSerializer):
-    # categoryName = serializers.StringRelatedField()
-    # categoryName = serializers.SlugRelatedField(queryset=Category1.objects.all(), slug_field='name')
+    # categoryName = serializers.StringRelatedField(many=True)
+    # categoryName = serializers.SlugRelatedField(read_only=True, slug_field='name')
+    # checklist = Category1Serializer(many=False, read_only=True)
     class Meta:
         model = Category2
-        fields = '__all__'
+        fields = ('id','steps', 'categoryID', 'description', 'created_by')
 
+
+class Category2ChecklistSerializer(serializers.ModelSerializer):
+    categoryID = serializers.StringRelatedField()
+    # categoryName = serializers.SlugRelatedField(read_only=True, slug_field='name')
+    # checklist = Category1Serializer(many=False, read_only=True)
+    class Meta:
+        model = Category2
+        fields = ('id','steps', 'categoryID', 'description', 'created_by')
     
-
-
 
 class Category3Serializer(serializers.ModelSerializer):
     # categoryName = serializers.StringRelatedField()
     
     class Meta:
         model = Category3
-        fields = '__all__'          
+        fields = ('id','steps', 'categoryID', 'description', 'created_by')       
 
-    # def to_representation(self, instance):
-    #     rep = super(Category3Serializer, self).to_representation(instance)
-    #     rep['defect_codes'] = instance.defect_codes.name
-    #     return rep
+
+
+class Category3DefectCodesSerializer(serializers.ModelSerializer):
+    categoryID = serializers.StringRelatedField()
+    
+    class Meta:
+        model = Category3
+        fields = ('id','steps', 'categoryID', 'description', 'created_by')     
+
+   
 
