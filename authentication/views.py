@@ -11,41 +11,32 @@ from knox.views import LoginView as KnoxLoginView
 from rest_framework.permissions import IsAuthenticated
 
 from knox.models import AuthToken
-# from .serializers import UserSerializer , RegisterSerializer
+from .serializers import UserSerializer , RegisterSerializer
 from knox.auth import TokenAuthentication
 
 
-# class RegisterAPI(generics.GenericAPIView):
-#     serializer_class = RegisterSerializer
+class RegisterAPI(generics.GenericAPIView):
+    serializer_class = RegisterSerializer
 
-#     def post(self, request, *args, **kwargs):
-#         serializer = self.get_serializer(data=request.data)
-#         serializer.is_valid(raise_exception=True)
-#         user = serializer.save()
-#         return HttpResponse({
-#         "user": UserSerializer(user, context=self.get_serializer_context()).data,
-#         "token": AuthToken.objects.create(user)[1]
-#         })
-
-
-
-# class LoginAPI(KnoxLoginView):
-#     permission_classes = (permissions.AllowAny,)
-
-#     def post(self, request, format=None):
-#         serializer = AuthTokenSerializer(data=request.data)
-#         if serializer.is_valid():
-#             user = serializer.validated_data['user']
-#             login(request, user)
-#             return super(LoginAPI, self).post(request, format=None)
-#         else:
-#             return HttpResponse("Invalid username and password")
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.save()
+        return HttpResponse({
+        "user": UserSerializer(user, context=self.get_serializer_context()).data,
+        "token": AuthToken.objects.create(user)[1]
+        })
 
 
 
+class LoginAPI(KnoxLoginView):
+    permission_classes = (permissions.AllowAny,)
 
-
-
-
-        
-
+    def post(self, request, format=None):
+        serializer = AuthTokenSerializer(data=request.data)
+        if serializer.is_valid():
+            user = serializer.validated_data['user']
+            login(request, user)
+            return super(LoginAPI, self).post(request, format=None)
+        else:
+            return HttpResponse("Invalid username and password")
