@@ -25,8 +25,8 @@ SECRET_KEY = '#fx)*$$_kzktzop#f8lj$q%hphs3vu6=bg^satgny8bt8!-pdm'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['dkmqa-api.herokuapp.com']
-# ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['dkmqa-api.herokuapp.com']
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -40,12 +40,21 @@ INSTALLED_APPS = [
 
     'authentication',
     'category',
+    'checklist',
+    'defect_codes',
+    'client',
+    'person',
+    'plant',
+    'shift',
+    'recipient_email',
+    'language',
 
     'rest_framework',
     'rest_framework.authtoken',
     'knox',
     'djoser',
     'corsheaders',
+
 ]
 
 
@@ -101,15 +110,19 @@ DATABASES = {
     }
 }
 
-###### DB.MySQL #####
+##### DB.MySQL #####
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'dkm-database-test',
-#         'USER': 'main',
-#         'PASSWORD': 'password...',
-#         'HOST': 'localhost',
+#         'NAME': 'db_a3572c_dkmqa',
+#         'USER': 'a3572c_dkmqa',
+#         'PASSWORD': 'dkMuS3rS2020',
+#         'HOST': 'MYSQL5025.site4now.net',
 #         'PORT': '3306',
+#         'OPTIONS': {
+#             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+            
+#         },
 #     }
 # }
 

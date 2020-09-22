@@ -1,48 +1,25 @@
 from rest_framework import serializers
 
-from .models import Category1, Category2, Category3
+from .models import Category
+from checklist.serializers import Category2Serializer
 
-
-class Category1Serializer(serializers.ModelSerializer):
-
+class CategorySerializer(serializers.ModelSerializer):
+    # created_by = serializers.PrimaryKeyRelatedField(read_only=True, default=serializers.CurrentUserDefault())
+    # update_by = serializers.PrimaryKeyRelatedField(read_only=True, default=serializers.CurrentUserDefault())
+    
     class Meta:
-        model = Category1
+        model = Category
         fields = '__all__'
 
+
+class CategoryStringSerializer(serializers.ModelSerializer):
+    created_by = serializers.StringRelatedField()
+    update_by = serializers.StringRelatedField()
+    checklist_id = Category2Serializer(many=True, read_only=True)
+    class Meta:
+        model = Category
+        fields = '__all__'
  
-class Category2Serializer(serializers.ModelSerializer):
-    # categoryName = serializers.StringRelatedField(many=True)
-    # categoryName = serializers.SlugRelatedField(read_only=True, slug_field='name')
-    # checklist = Category1Serializer(many=False, read_only=True)
-    class Meta:
-        model = Category2
-        fields = ('id','steps', 'categoryID', 'description', 'created_by')
-
-
-class Category2ChecklistSerializer(serializers.ModelSerializer):
-    categoryID = serializers.StringRelatedField()
-    # categoryName = serializers.SlugRelatedField(read_only=True, slug_field='name')
-    # checklist = Category1Serializer(many=False, read_only=True)
-    class Meta:
-        model = Category2
-        fields = ('id','steps', 'categoryID', 'description', 'created_by')
-    
-
-class Category3Serializer(serializers.ModelSerializer):
-    # categoryName = serializers.StringRelatedField()
-    
-    class Meta:
-        model = Category3
-        fields = ('id','steps', 'categoryID', 'description', 'created_by')       
-
-
-
-class Category3DefectCodesSerializer(serializers.ModelSerializer):
-    categoryID = serializers.StringRelatedField()
-    
-    class Meta:
-        model = Category3
-        fields = ('id','steps', 'categoryID', 'description', 'created_by')     
 
    
 

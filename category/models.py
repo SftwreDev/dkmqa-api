@@ -9,76 +9,38 @@ class Language(models.Model):
     date_updated = models.DateField(auto_now=True, verbose_name='Date updated') 
     update_by = models.CharField(max_length=100, verbose_name="Update by") # Sample Fields
 
+    class Meta:
+        managed = False
+        db_table = 'language'
 
 ################# Category 1 Translation Choices ########################
 
-class Category1Translation(models.Model):
+class CategoryTranslation(models.Model):
     
-    LanguageID = models.ForeignKey(Language, on_delete=models.CASCADE, verbose_name= 'Language ID')
+    language_id = models.ForeignKey(Language, on_delete=models.CASCADE, verbose_name= 'Language ID')
     name = models.CharField(max_length=100, verbose_name= 'Category 1 Translation')
 
+    class Meta:
+        db_table = 'category_translation'
 
 
-################# Category 1 Choices ########################
-
-class Category1(models.Model):
+class Category(models.Model):
     # category1Translation = models.ForeignKey(Category1Translation, on_delete=models.CASCADE, verbose_name="Category 1 ID")
     name = models.CharField(max_length = 200, verbose_name = "Category 1 Label")
     steps = models.PositiveIntegerField()
     date_created = models.DateField(auto_now=True, verbose_name="Date Created")
-    created_by = models.CharField(max_length=100, verbose_name= 'Created by')
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name= 'Created by', related_name='category_created')
     date_updated = models.DateField(auto_now=True, verbose_name='Date updated')
-    update_by = models.CharField(max_length=100, verbose_name='Update by')
+    update_by = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name= 'Update by', related_name='category_update')
 
     
     def __str__(self):
         return self.name
     
-
-################# Category 2 Translation Choices ########################
-
-class Category2Translation(models.Model):
-    
-    LanguageID = models.ForeignKey(Language, on_delete=models.CASCADE, verbose_name= 'Language ID')
-    name = models.CharField(max_length=100, verbose_name= 'Category 2 Translation')
-
-
-################# Category 2 Checklist ########################
-
-class Category2(models.Model):
-    categoryID = models.ForeignKey(Category1, on_delete=models.SET_NULL, null=True, verbose_name = 'Category Name', related_name ='checklist')
-    # category2Translation = models.ForeignKey(Category2Translation, on_delete = models.CASCADE, verbose_name = "Category 2 Transalation")
-    steps = models.PositiveIntegerField()
-    description = models.CharField(max_length=500,blank=True, null=True, verbose_name="Description")
-    date_created = models.DateField(auto_now=True, verbose_name="Date Created")
-    created_by = models.CharField(max_length=100,blank=True, null=True, verbose_name= 'Created by')
-
-    # def __str__(self):
-    #     return self.categoryName
-    
     
 
-################# Category 2 Translation Choices ########################
-
-class Category3Translation(models.Model):
-    
-    LanguageID = models.ForeignKey(Language, on_delete=models.CASCADE, verbose_name= 'Language ID')
-    name = models.CharField(max_length=100, verbose_name= 'Category 3 Translation')
-
-
-################# Category 2 Checklist ########################
-
-class Category3(models.Model):
-
-    categoryID = models.ForeignKey(Category1, on_delete=models.CASCADE, verbose_name = 'Category Name', related_name ='defect_codes')
-    # category3Translation = models.ForeignKey(Category3Translation, on_delete = models.CASCADE, verbose_name = "Category 2 Transalation")
-    steps = models.PositiveIntegerField()
-    description = models.CharField(max_length=500, verbose_name="Description")
-    date_created = models.DateField(auto_now=True, verbose_name="Date Created")
-    created_by = models.CharField(max_length=100, verbose_name= 'Created by')
-    # date_updated = models.DateField(auto_now=True, verbose_name='Date updated')
-    # update_by = models.CharField(max_length=100, verbose_name='Update by')
-
+    class Meta:
+        db_table = 'category'
 
 
 
