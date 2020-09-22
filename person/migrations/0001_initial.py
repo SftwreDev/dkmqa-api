@@ -24,7 +24,7 @@ class Migration(migrations.Migration):
                 ('last_name', models.CharField(max_length=100, verbose_name='Last Name')),
                 ('position', models.CharField(max_length=100, verbose_name='Position')),
                 ('email', models.EmailField(max_length=254, verbose_name='Email')),
-                ('contact_no', phonenumber_field.modelfields.PhoneNumberField(max_length=128, region=None)),
+                ('contact_no', models.CharField(max_length=100, verbose_name='Contact No')),
                 ('date_created', models.DateField(auto_now=True)),
                 ('date_updated', models.DateField(auto_now=True)),
                 ('created_by', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='person_created_by', to=settings.AUTH_USER_MODEL, verbose_name='Created by')),
