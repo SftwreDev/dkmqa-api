@@ -13,6 +13,9 @@ class ShiftCode(models.Model):
 
     def __str__(self):
         return self.shift_code
+
+    class Meta:
+        db_table = 'shift_code'
     
 
 class Shift(models.Model):
@@ -31,3 +34,5 @@ class Shift(models.Model):
     def __str__(self):
         return self.description
     
+    class Meta:
+        db_table = 'shift'

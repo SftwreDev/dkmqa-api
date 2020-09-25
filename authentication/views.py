@@ -40,3 +40,12 @@ class LoginAPI(KnoxLoginView):
             return super(LoginAPI, self).post(request, format=None)
         else:
             return HttpResponse("Invalid username and password")
+
+
+
+
+
+
+
+        
+

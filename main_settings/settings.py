@@ -25,8 +25,8 @@ SECRET_KEY = '#fx)*$$_kzktzop#f8lj$q%hphs3vu6=bg^satgny8bt8!-pdm'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['dkmqa-api.herokuapp.com']
-# ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['dkmqa-api.herokuapp.com']
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'language',
 
     'rest_framework',
+    # 'rest_framework_tricks',
     'rest_framework.authtoken',
     'knox',
     'djoser',
@@ -104,27 +105,27 @@ WSGI_APPLICATION = 'main_settings.wsgi.application'
 import os
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+     'default': {
+         'ENGINE': 'django.db.backends.sqlite3',
+         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+     }
+ }
 
 ##### DB.MySQL #####
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'db_a3572c_dkmqa',
-#         'USER': 'a3572c_dkmqa',
-#         'PASSWORD': 'dkMuS3rS2020',
-#         'HOST': 'MYSQL5025.site4now.net',
-#         'PORT': '3306',
-#         'OPTIONS': {
-#             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-            
-#         },
-#     }
-# }
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.mysql',
+#        'NAME': 'db_a3572c_dkmqa',
+#        'USER': 'a3572c_dkmqa',
+#        'PASSWORD': 'dkMuS3rS2020',
+#        'HOST': 'MYSQL5025.site4now.net',
+#        'PORT': '3306',
+#        'OPTIONS': {
+#            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+#           
+#        },
+#    }
+#}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators

@@ -15,7 +15,7 @@ class CategorySerializer(serializers.ModelSerializer):
 class CategoryStringSerializer(serializers.ModelSerializer):
     created_by = serializers.StringRelatedField()
     update_by = serializers.StringRelatedField()
-    checklist_id = Category2Serializer(many=True, read_only=True)
+    # checklist_id = Category2Serializer(many=True, read_only=True)
     class Meta:
         model = Category
         fields = '__all__'

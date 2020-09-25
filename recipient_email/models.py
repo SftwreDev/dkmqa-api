@@ -18,3 +18,7 @@ class Recipient_Email(models.Model):
 
     def __str__(self):
         return self.plant + ' | ' + self.shift + ' | ' + 'From' + self.person
+
+    
+    class Meta:
+        db_table = 'recipient_email'

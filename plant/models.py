@@ -18,6 +18,8 @@ class Address(models.Model):
     def __str__(self):
         return self.street_1 + '' + self.street_2 + '' + self.city
 
+    class Meta:
+        db_table = 'address'
 
 class Plant(models.Model):
     client = models.ForeignKey(Client, on_delete=models.CASCADE, verbose_name= 'Client', related_name='plant_client')
@@ -32,3 +34,6 @@ class Plant(models.Model):
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        db_table = 'plant'

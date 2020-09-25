@@ -3,12 +3,14 @@ from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveAPIView,
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .serializers import Category2Serializer, Category2ChecklistSerializer
-from .models import Checklist
+from .serializers import Category2Serializer, Category2ChecklistSerializer , ChecklistTranslationPostSerializers, ChecklistTranslationStringSerializer
+from .models import Checklist , ChecklistTranslation
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 from rest_framework import status
 from knox.auth import TokenAuthentication
 
+
+########### Checklist API #################
 
 @api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
@@ -49,4 +51,42 @@ def category2(request, pk):
         cat1 = Checklist.objects.get(id=pk)
         cat1.delete()
 
+        return Response("Item successfully deleted")
+
+
+############ Checklist Translation API #################
+
+
+@api_view(['GET', 'POST'])
+@permission_classes([IsAuthenticated])
+def translation_list_and_create(request):
+    if request.method == 'GET':
+        translation = ChecklistTranslation.objects.all()
+        serializer = ChecklistTranslationStringSerializer(translation, many=True)
+        return Response(serializer.data)
+    elif request.method == 'POST' :
+        serializer = ChecklistTranslationPostSerializers(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+        else:
+            content = {'Error': 'Invalid data'}
+            return Response(content,status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.data)
+
+
+@api_view(['PUT', 'DELETE'])
+@permission_classes([IsAuthenticated])
+def translation_update_and_delete(request, pk):
+    if request.method == 'PUT':
+        translation = ChecklistTranslation.objects.get(id=pk)
+        serializer = ChecklistTranslationPostSerializers(instance=translation, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+        else:
+            content = {'Error': 'Invalid data'}
+            return Response(content,status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.data)
+    elif request.method == 'DELETE':
+        transaltion = ChecklistTranslation.objects.get(id=pk)
+        translation.delete()
         return Response("Item successfully deleted")

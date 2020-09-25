@@ -19,6 +19,7 @@ class Person(models.Model):
     def __str__(self):
         return self.last_name + ',' + self.first_name + ' ' + self.middle_name
     
-    
+    class Meta:
+        db_table = 'person'
 
 

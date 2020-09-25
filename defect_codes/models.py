@@ -1,22 +1,14 @@
 from django.db import models
 from authentication.models import User
 from category.models import Category, Language
+from language.models import Language
 
-class DefectcodesTranslation(models.Model):
-    
-    language = models.ForeignKey(Language, on_delete=models.CASCADE, verbose_name= 'Language ID',related_name ='defect_codes_language')
-    name = models.CharField(max_length=100, verbose_name= 'Category 3 Translation')
 
-    class Meta:
-        managed = False
-        db_table = 'defect_codes_translation'
 
-################# Category 2 Checklist ########################
+################# Defect Codes ########################
 
 class Defectcodes(models.Model):
 
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name = 'Category Name', related_name ='defect_codes_id')
-    # category3Translation = models.ForeignKey(Category3Translation, on_delete = models.CASCADE, verbose_name = "Category 2 Transalation")
     steps = models.PositiveIntegerField()
     description = models.CharField(max_length=500, verbose_name="Description")
     date_created = models.DateField(auto_now=True, verbose_name="Date Created")
@@ -26,3 +18,13 @@ class Defectcodes(models.Model):
 
     class Meta:
         db_table = 'defect_codes'
+
+################# Defect Codes Translations ########################
+
+class DefectcodesTranslation(models.Model):
+    defect_codes = models.ForeignKey(Defectcodes, on_delete=models.CASCADE, related_name = 'defect_codes_id')
+    language = models.ForeignKey(Language, on_delete=models.CASCADE, verbose_name= 'Language ID',related_name ='defect_codes_language')
+    name = models.CharField(max_length=100, verbose_name= 'Category 3 Translation')
+
+    class Meta:
+        db_table = 'defect_codes_translations'
