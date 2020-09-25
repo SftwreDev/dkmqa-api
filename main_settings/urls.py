@@ -27,7 +27,7 @@ urlpatterns = [
     path('', include('shift.urls')),
     path('', include('recipient_email.urls')),
     path('', include('language.urls')),
-#     path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls),
 
 
 ]
