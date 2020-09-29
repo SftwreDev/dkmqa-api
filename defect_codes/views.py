@@ -29,10 +29,15 @@ def Category3API(request):
         return Response(serializer.data)
 
 
-@api_view(['PUT', 'DELETE'])
+@api_view(['GET','PUT', 'DELETE'])
 @permission_classes([IsAuthenticated])
 def category3(request, pk):
-    if request.method == 'PUT':
+    if request.method == 'GET':
+        defect_codes = Defectcodes.objects.get(id=pk)
+        serializer = ChecklistDetailSerializers(instance=defect_codes, many=False)
+        return Response(serializer.data)
+
+    elif request.method == 'PUT':
         cat3 = Defectcodes.objects.get(id=pk)
         serializer = Category3Serializer(instance=cat3, data=request.data)
         request.data._mutable = True

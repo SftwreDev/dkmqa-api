@@ -17,7 +17,7 @@ class Category(models.Model):
     class Meta:
         db_table = 'category'
 
-
+ 
 
 class CategoryTranslation(models.Model):
     category = models.ForeignKey(Category, on_delete = models.CASCADE, related_name='category_1')

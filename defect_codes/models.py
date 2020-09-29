@@ -22,7 +22,7 @@ class Defectcodes(models.Model):
 ################# Defect Codes Translations ########################
 
 class DefectcodesTranslation(models.Model):
-    defect_codes = models.ForeignKey(Defectcodes, on_delete=models.CASCADE, related_name = 'defect_codes_id')
+    defect_code = models.ForeignKey(Defectcodes, on_delete=models.CASCADE, related_name = 'defect_code_id')
     language = models.ForeignKey(Language, on_delete=models.CASCADE, verbose_name= 'Language ID',related_name ='defect_codes_language')
     name = models.CharField(max_length=100, verbose_name= 'Category 3 Translation')
 

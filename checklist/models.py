@@ -26,7 +26,7 @@ class ChecklistTranslation(models.Model):
     
     language = models.ForeignKey(Language, on_delete=models.CASCADE, verbose_name= 'Language ID',related_name ='checklist_translation_language')
     description = models.CharField(max_length=100, verbose_name= 'Category 2 Translation')
-    checklist = models.ForeignKey(Checklist, on_delete=models.CASCADE, related_name = 'checklist_id')
+    checklist = models.ForeignKey(Checklist, on_delete=models.CASCADE, related_name = 'checklist_translation_id')
 
     def __str__(self):
         return self.description

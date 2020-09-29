@@ -12,7 +12,7 @@ class Language(models.Model):
     updated_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='language_updated_by')
 
     def __str__(self):
-        return self.name + ', Code: ' + self.code
+        return self.name
 
     class Meta:
         db_table = 'language'
