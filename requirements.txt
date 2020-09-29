@@ -27,3 +27,5 @@ mysqlclient==2.0.1
 psycopg2==2.8.5
 dj-database-url==0.5.0
 django-phonenumber-field==5.0.0
+drf-nested-serializer==0.1.0
+drf-writable-nested==0.6.1
