@@ -20,13 +20,12 @@ class Category(models.Model):
  
 
 class CategoryTranslation(models.Model):
-    category = models.ForeignKey(Category, on_delete = models.CASCADE, related_name='category_1')
-    language = models.ForeignKey(Language, on_delete=models.SET_NULL, null=True, verbose_name= 'Language ID', related_name='translation_category_id')
+    category = models.ForeignKey(Category, on_delete = models.CASCADE, related_name='category_translation')
+    language = models.ForeignKey(Language, on_delete=models.CASCADE, verbose_name= 'Language ID', related_name='translation_category_id')
     name = models.CharField(max_length=100, verbose_name= 'Category Translation')
 
     class Meta:
         db_table = 'category_translation'
-
 
 
 

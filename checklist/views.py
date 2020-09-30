@@ -3,7 +3,7 @@ from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveAPIView,
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .serializers import Category2Serializer, Category2ChecklistSerializer , ChecklistTranslationPostSerializers, ChecklistTranslationStringSerializer, ChecklistDetailSerializers
+from .serializers import Category2Serializer, Category2ChecklistSerializer , ChecklistTranslationPostSerializers, ChecklistTranslationStringSerializer
 from .models import Checklist , ChecklistTranslation
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 from rest_framework import status
@@ -21,7 +21,7 @@ def Category2API(request):
         return Response(serializer.data)
     elif request.method == 'POST' :
         serializer = Category2Serializer(data=request.data)
-        request.data._mutable = True
+        # request.data._mutable = True
         request.data['created_by'] = request.user.id
         request.data['update_by'] = request.user.id
         if serializer.is_valid():
@@ -37,13 +37,13 @@ def Category2API(request):
 def category2(request, pk):
     if request.method == 'GET':
         cat2 = Checklist.objects.get(id=pk)
-        serializer = ChecklistDetailSerializers(instance=cat2, many=False)
+        serializer = Category2ChecklistSerializer(instance=cat2, many=False)
         return Response(serializer.data)
         
     elif request.method == 'PUT':
         cat2 = Checklist.objects.get(id=pk)
         serializer = Category2Serializer(instance=cat2, data=request.data)
-        request.data._mutable = True
+        # request.data._mutable = True
         request.data['created_by'] = request.user.id
         request.data['update_by'] = request.user.id
         if serializer.is_valid():

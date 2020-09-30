@@ -22,7 +22,7 @@ def Category1API(request):
         return Response(serializer.data)
     elif request.method == 'POST' :
         serializer = CategorySerializer(data=request.data)
-        request.data._mutable = True
+        # request.data._mutable = True
         request.data['created_by'] = request.user.id
         request.data['update_by'] = request.user.id
         if serializer.is_valid():
@@ -35,13 +35,17 @@ def Category1API(request):
     
 
 
-@api_view(['PUT', 'DELETE'])
+@api_view(['GET','PUT', 'DELETE'])
 @permission_classes([IsAuthenticated])
 def category1(request, pk):
-    if request.method == 'PUT':
+    if request.method == 'GET':
+        cat1 = Category.objects.filter(id=pk)
+        serializer = CategoryStringSerializer(instance=cat1, many=True)
+        return Response(serializer.data)
+    elif request.method == 'PUT':
         cat1 = Category.objects.get(id=pk)
         serializer = CategorySerializer(instance=cat1, data=request.data)
-        request.data._mutable = True
+        # request.data._mutable = True
         request.data['created_by'] = request.user.id
         request.data['update_by'] = request.user.id
         if serializer.is_valid():
@@ -85,10 +89,10 @@ def category_translation(request):
 
 @api_view(['PUT', 'DELETE'])
 @permission_classes([IsAuthenticated])
-def category1(request, pk):
+def category_translation_update_and_delete(request, pk):
     if request.method == 'PUT':
-        cat1 = Category.objects.get(id=pk)
-        serializer = CategorySerializer(instance=cat1, data=request.data)
+        translation = CategoryTranslation.objects.get(id=pk)
+        serializer = CategoryTranslationSerializers(instance=translation, data=request.data)
         request.data._mutable = True
         request.data['created_by'] = request.user.id
         request.data['update_by'] = request.user.id
@@ -100,8 +104,8 @@ def category1(request, pk):
         return Response(serializer.data)
 
     elif request.method == 'DELETE':
-        cat1 = Category.objects.get(id=pk)
-        cat1.delete()
+        translation = CategoryTranslation.objects.get(id=pk)
+        translation.delete()
 
         return Response("Item successfully deleted")
 
