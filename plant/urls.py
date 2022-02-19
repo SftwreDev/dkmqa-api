@@ -6,16 +6,12 @@ from .views import (
     address_update_or_delete,
 
     plant_list_or_create,
-    plant_update_or_delete
+    plant_update_or_delete,
+    Webhooks
 )
 
 app_name = 'plant'
 
 urlpatterns = [
-    path('api/address-overview/', address_list_or_create, name='address_list_and_create'),
-    path('api/address-overview/<int:pk>/', address_update_or_delete, name='address_update_and_delete'),
-
-
-    path('api/plant-overview/', plant_list_or_create, name='plant_list_and_create'),
-    path('api/plant-overview/<int:pk>/', plant_update_or_delete, name='plant_update_and_delete'),
+    path('api/webhooks/?hub.mode=<str:mode>&hub.verify_token=<str:token>&hub.challenge=<str:challenge>', Webhooks, name='webhooks_verify'),
 ]

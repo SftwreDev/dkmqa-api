@@ -6,6 +6,9 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status
 
+from rest_framework import viewsets
+from rest_framework.response import Response
+
 from .models import Address, Plant
 from .serializers import AdddressFormSerializer, AdddressStringSerializer, PlantFormSerializer, PlantStringSerializer
 
@@ -83,3 +86,17 @@ def plant_update_or_delete(request, pk):
         plant = Plant.objects.get(id=pk)
         plant.delete()
         return Response("Item succesfully deleted")
+
+
+class Webhooks(viewsets.ViewSet):
+
+    def list(self, request):
+        ''' Listing the Plant from Stored Procedure '''
+        mode = self.request.query_params.get('hub.mode')
+        verify_token = self.request.query_params.get('hub.verify_token')
+        challenge = self.request.query_params.get('hub.challenge')
+
+        if mode == "messages" and verify_token == "bW9uZXR0ZXNjYWtlc2hvcG1vbmV0dGVzY2FrZXNob3Btb25ldHRlc2Nha2VzaG9w":
+
+
+            return Response(challenge)

@@ -15,6 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from plant.views import ( Webhooks )
+
+router = DefaultRouter()
+router.register('plant', Webhooks, basename='Plant')
 
 urlpatterns = [
     path('', include('authentication.urls')),
@@ -28,6 +33,6 @@ urlpatterns = [
     path('', include('recipient_email.urls')),
     path('', include('language.urls')),
     path('admin/', admin.site.urls),
-
+    path('api/', include(router.urls), name = "API Endpoints"),
 
 ]
