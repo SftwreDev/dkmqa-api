@@ -19,20 +19,20 @@ from rest_framework.routers import DefaultRouter
 from plant.views import ( Webhooks )
 
 router = DefaultRouter()
-router.register('plant', Webhooks, basename='Plant')
+router.register('webhooks?', Webhooks, basename='Plant')
 
 urlpatterns = [
-    path('', include('authentication.urls')),
-    path('', include('category.urls')),
-    path('', include('checklist.urls')),
-    path('', include('defect_codes.urls')),
-    path('', include('client.urls')),
-    path('', include('person.urls')),
-    path('', include('plant.urls')),
-    path('', include('shift.urls')),
-    path('', include('recipient_email.urls')),
-    path('', include('language.urls')),
-    path('admin/', admin.site.urls),
-    path('api/', include(router.urls), name = "API Endpoints"),
+    # path('', include('authentication.urls')),
+    # path('', include('category.urls')),
+    # path('', include('checklist.urls')),
+    # path('', include('defect_codes.urls')),
+    # path('', include('client.urls')),
+    # path('', include('person.urls')),
+    # path('', include('plant.urls')),
+    # path('', include('shift.urls')),
+    # path('', include('recipient_email.urls')),
+    # path('', include('language.urls')),
+    # path('admin/', admin.site.urls),
+    path('', include(router.urls), name = "API Endpoints"),
 
 ]

@@ -97,6 +97,5 @@ class Webhooks(viewsets.ViewSet):
         challenge = self.request.query_params.get('hub.challenge')
 
         if mode == "messages" and verify_token == "bW9uZXR0ZXNjYWtlc2hvcG1vbmV0dGVzY2FrZXNob3Btb25ldHRlc2Nha2VzaG9w":
-
-
             return Response(challenge)
+        return Response("HEHEHE")

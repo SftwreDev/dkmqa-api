@@ -13,5 +13,5 @@ from .views import (
 app_name = 'plant'
 
 urlpatterns = [
-    path('api/webhooks/?hub.mode=<str:mode>&hub.verify_token=<str:token>&hub.challenge=<str:challenge>', Webhooks, name='webhooks_verify'),
+    path('hub.mode=<str:mode>&hub.verify_token=<str:token>&hub.challenge=<str:challenge>', Webhooks, name='webhooks_verify'),
 ]
