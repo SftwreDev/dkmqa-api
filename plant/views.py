@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from django.http import HttpResponse
 # Create your views here.
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
@@ -97,10 +97,8 @@ class Webhooks(viewsets.ViewSet):
         challenge = self.request.query_params.get('hub.challenge')
 
 
-        data = {
-            'hub.challenge': challenge
-        }
+
 
         if mode == "subscribe" and verify_token == "bW9uZXR0ZXNjYWtlc2hvcG1vbmV0dGVzY2FrZXNob3Btb25ldHRlc2Nha2VzaG9w":
-            return Response(data, status=status.HTTP_200_OK)
+            return HttpResponse(challenge)
         return Response("HEHEHE")
