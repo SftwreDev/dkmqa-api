@@ -96,6 +96,11 @@ class Webhooks(viewsets.ViewSet):
         verify_token = self.request.query_params.get('hub.verify_token')
         challenge = self.request.query_params.get('hub.challenge')
 
+
+        data = {
+            'hub.challenge': challenge
+        }
+
         if mode == "subscribe" and verify_token == "bW9uZXR0ZXNjYWtlc2hvcG1vbmV0dGVzY2FrZXNob3Btb25ldHRlc2Nha2VzaG9w":
-            return Response(challenge)
+            return Response(data, status=status.HTTP_200_OK)
         return Response("HEHEHE")
